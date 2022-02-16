@@ -1,0 +1,7 @@
+# To install postgres
+docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -p 5432:5432 -d postgres
+
+docker start <container Id or Name>: Start an existing container.
+docker ps: List running containers.
+docker ps -all: List all containers that have run.
+docker stop <container Id or Name>: Stop a running container.
