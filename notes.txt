@@ -5,3 +5,8 @@ docker start <container Id or Name>: Start an existing container.
 docker ps: List running containers.
 docker ps -all: List all containers that have run.
 docker stop <container Id or Name>: Stop a running container.
+
+= install dot.net ef core
+dotnet add package Microsoft.EntityFrameworkCore -v 5.0
+dotnet add package Microsoft.EntityFrameworkCore.Design -v 5.0
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL -v 5.0
