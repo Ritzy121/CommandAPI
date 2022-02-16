@@ -10,3 +10,12 @@ docker stop <container Id or Name>: Stop a running container.
 dotnet add package Microsoft.EntityFrameworkCore -v 5.0
 dotnet add package Microsoft.EntityFrameworkCore.Design -v 5.0
 dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL -v 5.0
+
+# create a new postgres user
+create user cmddbuser with encrypted password 'pa55w0rd!' createdb;
+
+# create migration 
+ dotnet ef migrations add AddCommandsToDB
+ dotnet ef database update
+
+ 
