@@ -35,3 +35,7 @@ insert into "CommandItems" ("HowTo", "Platform", "CommandLine")
 VALUES ('Apply Migrations to DB', 'Entity Framework Package Manager Console', 
 'update database');
 
+## user secrets
+dotnet user-secrets set “UserID” “cmddbuser”
+dotnet user-secrets set “Password” “pa55w0rd!
+
