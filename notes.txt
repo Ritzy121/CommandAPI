@@ -18,4 +18,20 @@ create user cmddbuser with encrypted password 'pa55w0rd!' createdb;
  dotnet ef migrations add AddCommandsToDB
  dotnet ef database update
 
- 
+# added data
+insert into "CommandItems" ("HowTo", "Platform", "CommandLine")
+values ('Create an EF migration', 'Entity Framework Core Command Line', 
+'dotnet ef migrations add');
+insert into "CommandItems" ("HowTo", "Platform", "CommandLine")
+VALUES ('Apply Migrations to DB', 'Entity Framework Core Command Line', 
+'dotnet ef database update');
+
+
+# add a few more
+insert into "CommandItems" ("HowTo", "Platform", "CommandLine")
+values ('Create an EF migration', 'Entity Framework Package Manager Console', 
+'add-migration <name of migration>');
+insert into "CommandItems" ("HowTo", "Platform", "CommandLine")
+VALUES ('Apply Migrations to DB', 'Entity Framework Package Manager Console', 
+'update database');
+
