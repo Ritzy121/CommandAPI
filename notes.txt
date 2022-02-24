@@ -39,3 +39,6 @@ VALUES ('Apply Migrations to DB', 'Entity Framework Package Manager Console',
 dotnet user-secrets set “UserID” “cmddbuser”
 dotnet user-secrets set “Password” “pa55w0rd!
 
+# Auto mapper
+dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection
+

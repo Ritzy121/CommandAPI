@@ -41,6 +41,8 @@ namespace CommandAPI
             //SECTION 1. Add code below
             services.AddControllers();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             //Add the code below
             services.AddScoped<ICommandAPIRepo, SqlCommandAPIRepo>();
         }
