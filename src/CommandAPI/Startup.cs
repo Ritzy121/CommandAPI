@@ -11,6 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using Newtonsoft.Json.Serialization;
 
 namespace CommandAPI
 {
@@ -39,7 +40,10 @@ namespace CommandAPI
             });
 
             //SECTION 1. Add code below
-            services.AddControllers();
+            services.AddControllers()
+            .AddNewtonsoftJson(s => {
+                s.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            });
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
