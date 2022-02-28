@@ -4,6 +4,7 @@ using CommandAPI.Data;
 using CommandAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using CommandAPI.Dtos;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace CommandAPI.Controllers
 {
@@ -73,6 +74,36 @@ namespace CommandAPI.Controllers
                 return NotFound();
 
             _mapper.Map(command, commandFromDb);
+
+            _repository.UpdateCommand(commandFromDb);
+
+            _repository.SaveChanges();
+
+            return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public ActionResult PartialCommandUpdate(int id, JsonPatchDocument<CommandUpdateDto> patchDoc)
+        {
+            //get command from database
+            var commandFromDb = _repository.GetCommandById(id);
+            if(commandFromDb == null)
+                return NotFound();
+
+            //convert to DTO
+            var commandToPatch = _mapper.Map<CommandUpdateDto>(commandFromDb);
+
+            //apply path to dto object
+            patchDoc.ApplyTo(commandToPatch, ModelState);
+
+            //validate pathed dobject to ensure correctness
+            if(!TryValidateModel(commandToPatch))
+            {
+                return ValidationProblem(ModelState);
+            }
+
+            //map the pathced object to the command object in database
+            _mapper.Map(commandToPatch, commandFromDb);
 
             _repository.UpdateCommand(commandFromDb);
 
