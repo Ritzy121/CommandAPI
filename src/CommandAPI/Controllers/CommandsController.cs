@@ -54,7 +54,19 @@ namespace CommandAPI.Controllers
         }
     
         [HttpPut("{id}")]
-        public ActionResult UpdateComand(int id, CommandUpdateDto command)
+        public ActionResult UpdateComand([FromRoute]int id, [FromBody]CommandUpdateDto command)
+        {
+            return Update(id, command);
+        }  
+
+        [HttpPut]
+        public ActionResult UpdateComand2([FromQuery] int id, [FromBody]CommandUpdateDto command)
+        {
+            return Update(id, command);
+        }
+
+        [NonAction]
+        private ActionResult Update(int id, CommandUpdateDto command)
         {
             var commandFromDb = _repository.GetCommandById(id);
             if(commandFromDb == null)
@@ -67,6 +79,6 @@ namespace CommandAPI.Controllers
             _repository.SaveChanges();
 
             return NoContent();
-        }    
+        }
     }
 }
