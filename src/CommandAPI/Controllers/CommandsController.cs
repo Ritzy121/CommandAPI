@@ -55,13 +55,13 @@ namespace CommandAPI.Controllers
         }
     
         [HttpPut("{id}")]
-        public ActionResult UpdateComand([FromRoute]int id, [FromBody]CommandUpdateDto command)
+        public ActionResult UpdateCommand([FromRoute]int id, [FromBody]CommandUpdateDto command)
         {
             return Update(id, command);
         }  
 
         [HttpPut]
-        public ActionResult UpdateComand2([FromQuery] int id, [FromBody]CommandUpdateDto command)
+        public ActionResult UpdateCommand2([FromQuery] int id, [FromBody]CommandUpdateDto command)
         {
             return Update(id, command);
         }
