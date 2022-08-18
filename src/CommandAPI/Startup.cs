@@ -40,12 +40,12 @@ namespace CommandAPI
                 opt.UseNpgsql(builder.ConnectionString);
             });
 
-            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            // .AddJwtBearer(opt =>
-            // {
-            //     opt.Audience = Configuration["ResourceId"];
-            //     opt.Authority = $"{Configuration["Instance"]}{Configuration["TenantId"]}";
-            // });
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(opt =>
+            {
+                opt.Audience = Configuration["ResourceId"];
+                opt.Authority = $"{Configuration["Instance"]}{Configuration["TenantId"]}";
+            });
 
             //SECTION 1. Add code below
             services.AddControllers()
@@ -70,8 +70,8 @@ namespace CommandAPI
 
             app.UseRouting();
 
-            // app.UseAuthentication();
-            // app.UseAuthorization();
+            app.UseAuthentication();
+            app.UseAuthorization();
 
             app
                 .UseEndpoints(endpoints =>
